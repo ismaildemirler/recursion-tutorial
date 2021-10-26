@@ -2,9 +2,10 @@ package recursion;
 
 import recursion.a_string.RecursionWithString;
 import recursion.b_number.RecursionWithNumbers;
-import recursion.c_divideandconquer.RecursionWithDivideConquerAlgorithms;
+import recursion.c_divideandconquer.BinarySearch;
+import recursion.c_divideandconquer.MergeSort;
 import recursion.d_fibonacci.Fibonacci;
-import recursion.e_mergesort.MergeSort;
+import recursion.f_linkedlist.RecursionWithLinkedList;
 
 public class Recursion {
 
@@ -160,8 +161,8 @@ public class Recursion {
 		
 		System.out.println("-----------------------------------------------------------");
 		
-		RecursionWithDivideConquerAlgorithms recursionWithDivideConquer = new RecursionWithDivideConquerAlgorithms();
-		int searchedIndex = recursionWithDivideConquer.binarcySearchExample();
+		BinarySearch binarySearch = new BinarySearch();
+		int searchedIndex = binarySearch.binarcySearchExample();
 		System.out.println("The searched index of the number: " + searchedIndex);
 		System.out.println("********************************************************");
 		
@@ -175,7 +176,13 @@ public class Recursion {
 		System.out.println("-----------------------------------------------------------");
 		
 		MergeSort mergeSort = new MergeSort();
-		mergeSort.mergeSort();
-		System.out.println("********************************************************");
+		mergeSort.mergeSort();		
+
+		System.out.println("-----------------------------------------------------------");
+		
+		RecursionWithLinkedList recursionWithLinkedList = new RecursionWithLinkedList();
+		recursionWithLinkedList.reversalLinkedList();
+		recursionWithLinkedList.sortLinkedList();
+		recursionWithLinkedList.mergeLinkedList();
 	} 
 }

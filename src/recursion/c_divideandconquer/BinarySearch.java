@@ -1,6 +1,6 @@
 package recursion.c_divideandconquer;
 
-public class RecursionWithDivideConquerAlgorithms {
+public class BinarySearch {
 
 	/*
 	 * Divide & Conquer 

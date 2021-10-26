@@ -1,4 +1,4 @@
-package recursion.e_mergesort;
+package recursion.c_divideandconquer;
 
 public class MergeSort {
 
@@ -62,5 +62,86 @@ public class MergeSort {
 	
 	public void mergeSort() {
 		
+		var array = new int[] { 4, 1, 3, 2, 0, -1, 7, 10, 9, 20 };
+		
+		System.out.println("Beginning Array: ");
+		
+		for (int i : array) {
+			System.out.print(i + " ");
+		}
+		System.out.println("");
+		System.out.println("***********************************");
+
+		divide(array, 0, 9);
+		
+		System.out.println("Sorted Array: ");
+		
+		for (int i : array) {
+			System.out.print(i + " ");
+		}
+		System.out.println("");
+		System.out.println("***********************************");
+	}
+	
+	private void divide(int[] array, int start, int end) {
+		
+		if(start < end) {
+			int mid = (start + end) / 2;
+			divide(array, start, mid);
+			divide(array, mid + 1, end);
+			merge(array, start, mid, end);
+		}
+	}
+	
+	private void merge(int[] array, int start, int mid, int end) {
+		
+		//build temp arrays to avoid modifying the original content.
+				
+		int leftSize = mid - start + 1;    
+	    int rightSize = end - mid; 
+	    
+	    //Temporary Arrays
+	    int[] leftArray = new int[leftSize];
+	    int[] rightArray  = new int[rightSize];
+		
+	    /* copy data to temp arrays */  
+	    for (int i = 0; i < leftSize; i++)  {
+	    	leftArray[i] = array[start + i];   
+	    } 
+	    for (int j = 0; j < rightSize; j++) {
+	    	rightArray[j] = array[mid + 1 + j];
+	    } 
+	    
+	    int leftIndex = 0; /* initial index of first sub-array */  
+	    int rightIndex = 0; /* initial index of second sub-array */   
+	    int index = start;  /* initial index of merged sub-array */  
+	      
+	    while (leftIndex < leftSize && rightIndex < rightSize)    
+	    {    
+	        if(leftArray[leftIndex] <= rightArray[rightIndex])    
+	        {    
+	            array[index] = leftArray[leftIndex];    
+	            leftIndex++;    
+	        }    
+	        else    
+	        {    
+	        	array[index] = rightArray[rightIndex];    
+	        	rightIndex++;    
+	        }    
+	        index++;    
+	    }    
+	    while (leftIndex < leftSize)    
+	    {    
+	    	array[index] = leftArray[leftIndex];    
+	    	leftIndex++;    
+	    	index++;    
+	    }    
+	      
+	    while (rightIndex < rightSize)    
+	    {    
+	    	array[index] = rightArray[rightIndex];    
+	    	rightIndex++;    
+	    	index++;    
+	    }    
 	}
 }
