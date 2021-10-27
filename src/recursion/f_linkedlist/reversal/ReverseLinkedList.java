@@ -2,13 +2,16 @@ package recursion.f_linkedlist.reversal;
 
 public class ReverseLinkedList {
 
+	private Node head;
+
 	public class Node {
 		
-		private int val;
+		private int data;
 		private Node next;
 		
-		public Node(int val) {
-			this.val = val;
+		public Node(int data) {
+			this.data = data;
+			this.next = null;
 		}
 		
 		public void setNext(Node node) {
@@ -18,6 +21,14 @@ public class ReverseLinkedList {
 		public Node getNext() {
 			return next;
 		}
+	}
+	
+	public Node getHead() {
+		return head;
+	}
+
+	public void setHead(Node head) {
+		this.head = head;
 	}
 	
 	public Node reverse(Node node) {
@@ -32,11 +43,13 @@ public class ReverseLinkedList {
 		return p;
 	}
 	
-	public void printLinkedList(Node node) {
-		Node temp = node;
-		while(temp != null) {
-			System.out.println(temp.val + " ");
-			temp = temp.getNext();
+	public void printLinkedList(Node head) {
+		Node current = head;
+		while(current != null) {
+			System.out.println(current.val + " ");
+			current = current.getNext();
 		}
+		System.out.println("null");
+		System.out.println("");
 	}
 }

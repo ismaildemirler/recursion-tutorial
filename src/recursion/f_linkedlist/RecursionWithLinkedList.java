@@ -68,13 +68,13 @@ public class RecursionWithLinkedList {
 		
 		ReverseLinkedList linkedList = new ReverseLinkedList();
 		
-		Node node1 = linkedList.new Node(1);
+		linkedList.setHead(linkedList.new Node(10));
 		Node node2 = linkedList.new Node(2);
 		Node node3 = linkedList.new Node(3);
 		Node node4 = linkedList.new Node(4);
 		Node node5 = linkedList.new Node(5);
 		
-		node1.setNext(node2);
+		linkedList.getHead().setNext(node2);
 		node2.setNext(node3);
 		node3.setNext(node4);
 		node4.setNext(node5);
