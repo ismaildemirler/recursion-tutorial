@@ -1,7 +1,9 @@
 package recursion.f_linkedlist;
 
+import recursion.f_linkedlist.merging.MergeLinkedList;
 import recursion.f_linkedlist.reversal.ReverseLinkedList;
 import recursion.f_linkedlist.reversal.ReverseLinkedList.Node;
+import recursion.f_linkedlist.sorting.SortLinkedList;
 
 public class RecursionWithLinkedList {
 
@@ -80,23 +82,114 @@ public class RecursionWithLinkedList {
 		node4.setNext(node5);
 		
 		System.out.println("LinkedList Before Reverse: ");
-		linkedList.printLinkedList(node1);
+		linkedList.printLinkedList(linkedList.getHead());
 		
 		System.out.println("******************************");
 		
-		Node reversed = linkedList.reverse(node1);
+		Node reversed = linkedList.reverse(linkedList.getHead());
 		System.out.println(" ");
 
 		System.out.println("LinkedList After Reverse: ");
 		linkedList.printLinkedList(reversed);
 		System.out.println("******************************");
 	}
-
-	public void sortLinkedList() {
-		
-	}
 	
 	public void mergeLinkedList() {
 		
+		/*
+		 * A really fun problem to consider with linked lists is how do you merge two sorted linked
+		 * list recursively. We are going to look at how the call stack works for this. 
+		 */
+		
+		/*
+		 * We take in two head nodes. One was a list of values and the other is a singly linked list of 
+		 * values as well. And we asked what is the smallest input i could pass in? And that is a good 
+		 * consideration for our base case, the same formula that we have been applying. If i pass in A
+		 * head node for A, that is no, then i can just return B, because B would be merged with null
+		 * which would just be itself. And in the same vein, if B is null, and i merge that with A, then
+		 * i can just return A. And if they are both null, then no merge with null is also just the null
+		 * value. So this holds true. And that is the base case. But let's consider the other side of
+		 * things. And this is kind of a similar comparison that we saw with merge sort. After base case,
+		 * what is the unit of work that we need to do the recursion. And i think it will help if we look
+		 * at two lists.
+		 */
+		
+		MergeLinkedList linkedListA = new MergeLinkedList();
+		
+		linkedListA.setHead(linkedListA.new Node(4));
+		MergeLinkedList.Node nodea2 = linkedListA.new Node(11);
+		MergeLinkedList.Node nodea3 = linkedListA.new Node(16);
+		MergeLinkedList.Node nodea4 = linkedListA.new Node(20);
+		
+		linkedListA.getHead().setNext(nodea2);
+		nodea2.setNext(nodea3);
+		nodea3.setNext(nodea4);
+		
+		System.out.println("Linked List A: ");
+		MergeLinkedList.printLinkedList(linkedListA.getHead());
+		
+		MergeLinkedList linkedListB = new MergeLinkedList();
+		
+		linkedListB.setHead(linkedListB.new Node(1));
+		MergeLinkedList.Node nodeb2 = linkedListB.new Node(8);
+		MergeLinkedList.Node nodeb3 = linkedListB.new Node(22);
+		MergeLinkedList.Node nodeb4 = linkedListB.new Node(40);
+		
+		linkedListB.getHead().setNext(nodeb2);
+		nodeb2.setNext(nodeb3);
+		nodeb3.setNext(nodeb4);
+
+		System.out.println("Linked List B: ");
+		MergeLinkedList.printLinkedList(linkedListB.getHead());
+		
+		MergeLinkedList.Node sortedLinkedList = MergeLinkedList.merge(linkedListA.getHead(), linkedListB.getHead());
+		
+		System.out.println("Merged Linked List : ");
+		MergeLinkedList.printLinkedList(sortedLinkedList);
+
+		System.out.println("*******************************");
+	}
+
+	public void sortLinkedList() {
+		
+		/*
+		 * Merge sort is often preferred for sorting a linked list. 
+		 * The slow random-access performance of a linked list makes some other 
+		 * algorithms (such as quicksort) perform poorly, and others 
+		 * (such as heapsort) completely impossible.
+		 * Merge Sort is a Divide and Conquer algorithm. 
+		 * It divides the input array into two halves, calls itself for the two halves, 
+		 * and then merges the two sorted halves. The merge() function is used for merging 
+		 * two halves. The merge(arr, l, m, r) is a key process that assumes that arr[l..m] 
+		 * and arr[m+1..r] are sorted and merges the two sorted sub-arrays into one.
+		 * Let head be the first node of the linked list to be sorted and headRef be the pointer to head.
+		 * Note that we need a reference to head in MergeSort() as the below implementation 
+		 * changes next links to sort the linked lists (not data at the nodes), 
+		 * so head node has to be changed if the data at original 
+		 * head is not the smallest value in linked list.
+		 */
+		
+		SortLinkedList linkedList = new SortLinkedList();
+		
+		linkedList.setHead(linkedList.new Node(10));
+		SortLinkedList.Node node2 = linkedList.new Node(21);
+		SortLinkedList.Node node3 = linkedList.new Node(13);
+		SortLinkedList.Node node4 = linkedList.new Node(4);
+		SortLinkedList.Node node5 = linkedList.new Node(25);
+		
+		linkedList.getHead().setNext(node2);
+		node2.setNext(node3);
+		node3.setNext(node4);
+		node4.setNext(node5);
+
+		System.out.println("Original Linked List : ");
+		linkedList.printLinkedList(linkedList.getHead());
+		
+		SortLinkedList.Node sortedList = linkedList.mergeSort(linkedList.getHead());
+		System.out.println(" ");
+
+		System.out.println("Sorted Linked List : ");
+		linkedList.printLinkedList(sortedList);
+		System.out.println("*******************************");
 	}
 }

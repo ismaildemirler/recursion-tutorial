@@ -182,7 +182,7 @@ public class Recursion {
 		
 		RecursionWithLinkedList recursionWithLinkedList = new RecursionWithLinkedList();
 		recursionWithLinkedList.reversalLinkedList();
-		recursionWithLinkedList.sortLinkedList();
 		recursionWithLinkedList.mergeLinkedList();
+		recursionWithLinkedList.sortLinkedList();
 	} 
 }
